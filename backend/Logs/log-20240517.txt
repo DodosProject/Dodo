@@ -5,3 +5,191 @@
 2024-05-17T20:03:13.4022728+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
 2024-05-17T20:03:13.4039177+02:00  [INF] Hosting environment: "Development" (c3307c92)
 2024-05-17T20:03:13.4052170+02:00  [INF] Content root path: "C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Api\" (b5d60022)
+2024-05-17T21:41:18.6457427+02:00  [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development. (4007092b)
+2024-05-17T21:41:18.7987715+02:00  [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T21:41:19.7389864+02:00  [INF] Executed DbCommand ("206"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [BookyBookDB];" (0723d8ff)
+2024-05-17T21:41:19.8443128+02:00  [INF] Executed DbCommand ("103"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [BookyBookDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;" (0723d8ff)
+2024-05-17T21:41:19.8655218+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2024-05-17T21:41:19.9332372+02:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);" (0723d8ff)
+2024-05-17T21:41:19.9353869+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2024-05-17T21:41:19.9552492+02:00  [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2024-05-17T21:41:19.9616202+02:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2024-05-17T21:41:19.9721860+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-05-17T21:41:20.3507189+02:00  [INF] Now listening on: "https://localhost:7240" (d826f4b8)
+2024-05-17T21:41:20.3515384+02:00  [INF] Now listening on: "http://localhost:5271" (d826f4b8)
+2024-05-17T21:41:20.3571085+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-05-17T21:41:20.3579972+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-05-17T21:41:20.3589786+02:00  [INF] Content root path: "D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Api\" (b5d60022)
+2024-05-17T21:41:53.3665804+02:00 0HN3ML59Q13MM:0000000F [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T21:41:53.9796904+02:00 0HN3ML59Q13MM:0000000F [ERR] Failed executing DbCommand ("69"ms) [Parameters=["@__ToLower_0='admin@admin.com' (Size = 4000), @__loginDTO_Password_1='admin' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name], [u].[Password], [u].[RegistrationDate]
+FROM [Users] AS [u]
+WHERE (LOWER([u].[Email]) = @__ToLower_0) AND ([u].[Password] = @__loginDTO_Password_1)" (627a98df)
+2024-05-17T21:41:54.0881747+02:00 0HN3ML59Q13MM:0000000F [ERR] An exception occurred while iterating over the results of a query for context type '"DoDo.Data.DoDoContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Users'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:1d4f77af-9379-4ec3-9fc3-a10108b1c395
+Error Number:208,State:1,Class:16" (f5c7ac34)
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Users'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:1d4f77af-9379-4ec3-9fc3-a10108b1c395
+Error Number:208,State:1,Class:16
+2024-05-17T21:41:54.1967205+02:00 0HN3ML59Q13MM:0000000F [INF] Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Users'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.TryGetSingle[TSource](IEnumerable`1 source, Boolean& found)
+   at lambda_method49(Closure , QueryContext )
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
+   at DoDo.Data.UserRepository.GetUserFromCredentials(LoginDTO loginDTO) in d:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Data\UserRepository.cs:line 91
+   at DoDo.Business.AuthService.Login(LoginDTO loginDTO) in D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Business\AuthService.cs:line 36
+   at API.Controllers.AuthController.Login(LoginDTO loginDTO) in d:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Api\Controllers\AuthController.cs:line 27
+ClientConnectionId:1d4f77af-9379-4ec3-9fc3-a10108b1c395
+Error Number:208,State:1,Class:16 (458179fb)
+2024-05-17T21:56:00.8139537+02:00  [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development. (4007092b)
+2024-05-17T21:56:00.9695712+02:00  [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T21:56:01.2352403+02:00  [INF] Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2024-05-17T21:56:01.2654499+02:00  [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2024-05-17T21:56:01.2694204+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2024-05-17T21:56:01.2713800+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2024-05-17T21:56:01.2875077+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2024-05-17T21:56:01.2993928+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-05-17T21:56:01.4406419+02:00  [INF] Now listening on: "https://localhost:7240" (d826f4b8)
+2024-05-17T21:56:01.4414783+02:00  [INF] Now listening on: "http://localhost:5271" (d826f4b8)
+2024-05-17T21:56:01.4462310+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-05-17T21:56:01.4471993+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-05-17T21:56:01.4480215+02:00  [INF] Content root path: "D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Api\" (b5d60022)
+2024-05-17T21:56:16.5572989+02:00 0HN3MLDGCOG3G:00000005 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T21:56:17.1117840+02:00 0HN3MLDGCOG3G:00000005 [INF] Executed DbCommand ("35"ms) [Parameters=["@__ToLower_0='admin@admin.com' (Size = 4000), @__loginDTO_Password_1='admin' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name], [u].[Password], [u].[RegistrationDate]
+FROM [Users] AS [u]
+WHERE (LOWER([u].[Email]) = @__ToLower_0) AND ([u].[Password] = @__loginDTO_Password_1)" (0723d8ff)
+2024-05-17T21:56:37.4209796+02:00 0HN3MLDGCOG3G:00000007 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T21:56:37.4288353+02:00 0HN3MLDGCOG3G:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]" (0723d8ff)
+2024-05-17T21:57:20.6800026+02:00 0HN3MLDGCOG3G:00000009 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T21:57:20.6877134+02:00 0HN3MLDGCOG3G:00000009 [INF] Executed DbCommand ("2"ms) [Parameters=["@__taskId_0='10001'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]
+WHERE [d].[Id] = @__taskId_0" (0723d8ff)
+2024-05-17T21:57:46.1574111+02:00 0HN3MLDGCOG3G:0000000B [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T21:57:46.1626365+02:00 0HN3MLDGCOG3G:0000000B [INF] Executed DbCommand ("1"ms) [Parameters=["@__taskId_0='10001'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]
+WHERE [d].[Id] = @__taskId_0" (0723d8ff)
+2024-05-17T21:57:46.2417544+02:00 0HN3MLDGCOG3G:0000000B [INF] Executed DbCommand ("4"ms) [Parameters=["@p6='10001', @p0='True', @p1='2024-05-15T19:30:00.0000000', @p2='Tengo que fregar el suelo' (Size = 4000), @p3='1', @p4='Fregar' (Nullable = false) (Size = 4000), @p5='1'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [DoTasks] SET [Completed] = @p0, [CreationDate] = @p1, [Description] = @p2, [Priority] = @p3, [Title] = @p4, [UserId] = @p5
+WHERE [Id] = @p6;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2024-05-17T21:57:46.2646675+02:00 0HN3MLDGCOG3G:0000000B [INF] Executed DbCommand ("1"ms) [Parameters=["@__taskId_0='10001'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]
+WHERE [d].[Id] = @__taskId_0" (0723d8ff)
+2024-05-17T21:58:05.9121854+02:00 0HN3MLDGCOG3G:0000000D [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T21:58:05.9189110+02:00 0HN3MLDGCOG3G:0000000D [INF] Executed DbCommand ("3"ms) [Parameters=["@__taskId_0='10001'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]
+WHERE [d].[Id] = @__taskId_0" (0723d8ff)
+2024-05-17T21:58:15.7173304+02:00 0HN3MLDGCOG3G:0000000F [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T21:58:15.7220899+02:00 0HN3MLDGCOG3G:0000000F [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Id], [u].[Email], [u].[Name], [u].[Password], [u].[RegistrationDate]
+FROM [Users] AS [u]" (0723d8ff)
+2024-05-17T22:03:13.4921343+02:00 0HN3MLDGCOG3G:00000011 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T22:03:13.5004406+02:00 0HN3MLDGCOG3G:00000011 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]" (0723d8ff)
+2024-05-17T22:03:44.7893085+02:00 0HN3MLDGCOG3G:00000013 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T22:03:44.8306396+02:00 0HN3MLDGCOG3G:00000013 [INF] Executed DbCommand ("2"ms) [Parameters=["@p0='False', @p1='2024-05-17T00:00:00.0000000+02:00', @p2='Esto es una prueba' (Size = 4000), @p3='100', @p4='Prueba' (Nullable = false) (Size = 4000), @p5='1'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [DoTasks] ([Completed], [CreationDate], [Description], [Priority], [Title], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [Id]
+FROM [DoTasks]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2024-05-17T22:03:59.1578761+02:00 0HN3MLDGCOG3G:00000015 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T22:03:59.1637175+02:00 0HN3MLDGCOG3G:00000015 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]" (0723d8ff)
+2024-05-17T22:04:10.9051336+02:00 0HN3MLDGCOG3G:00000017 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T22:04:10.9073982+02:00 0HN3MLDGCOG3G:00000017 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]" (0723d8ff)
+2024-05-17T22:04:30.6891596+02:00 0HN3MLDGCOG3G:00000019 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T22:04:30.6949990+02:00 0HN3MLDGCOG3G:00000019 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]" (0723d8ff)
+2024-05-17T22:04:41.8319435+02:00 0HN3MLDGCOG3G:0000001B [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T22:04:41.8355677+02:00 0HN3MLDGCOG3G:0000001B [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]" (0723d8ff)
+2024-05-17T22:04:53.2792012+02:00 0HN3MLDGCOG3G:0000001D [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T22:04:53.2824854+02:00 0HN3MLDGCOG3G:0000001D [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]" (0723d8ff)
+2024-05-17T22:05:22.3939248+02:00 0HN3MLDGCOG3G:0000001F [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T22:05:22.4014679+02:00 0HN3MLDGCOG3G:0000001F [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]" (0723d8ff)
+2024-05-17T22:05:49.4698170+02:00 0HN3MLDGCOG3G:00000021 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T22:05:49.4728784+02:00 0HN3MLDGCOG3G:00000021 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]" (0723d8ff)

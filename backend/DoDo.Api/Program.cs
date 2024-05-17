@@ -29,8 +29,8 @@ builder.Services.AddScoped<IDoTaskService, DoTaskService>();
 builder.Services.AddScoped<IDoTaskRepository, DoTaskRepository>();
 
 // Obteniendo la cadena de conexión desde appsettings.json
-var connectionString = builder.Configuration.GetConnectionString("ServerDB_localhost");
-//var connectionString = builder.Configuration.GetConnectionString("ServerDB_dockernet");
+//var connectionString = builder.Configuration.GetConnectionString("ServerDB_localhost");
+var connectionString = builder.Configuration.GetConnectionString("ServerDB_dockernet");
 //var connectionString = builder.Configuration.GetConnectionString("ServerDB_azure");
 
 builder.Services.AddDbContext<DoDoContext>(options =>
@@ -87,12 +87,12 @@ var loggerFactory = app.Services.GetService<ILoggerFactory>();
 loggerFactory.AddFile(builder.Configuration["Logging:LogFilePath"].ToString());
 
 //Añade migraciones automáticamente
-// using (var scope = app.Services.CreateScope())
-// {
-//   var services = scope.ServiceProvider;
-//   var context = services.GetRequiredService<DoDoContext>();
-//   context.Database.Migrate();
-// }
+using (var scope = app.Services.CreateScope())
+{
+  var services = scope.ServiceProvider;
+  var context = services.GetRequiredService<DoDoContext>();
+  context.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment()) //DISABLE DUE TO CONTAINERING APP

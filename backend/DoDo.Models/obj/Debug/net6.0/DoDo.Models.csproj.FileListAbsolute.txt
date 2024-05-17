@@ -10,3 +10,15 @@ C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Model
 C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\refint\DoDo.Models.dll
 C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.pdb
 C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\ref\DoDo.Models.dll
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\bin\Debug\net6.0\DoDo.Models.deps.json
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\bin\Debug\net6.0\DoDo.Models.dll
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\bin\Debug\net6.0\DoDo.Models.pdb
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.AssemblyInfoInputs.cache
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.AssemblyInfo.cs
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.csproj.CoreCompileInputs.cache
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.sourcelink.json
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.dll
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\obj\Debug\net6.0\refint\DoDo.Models.dll
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.pdb
+D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Models\obj\Debug\net6.0\ref\DoDo.Models.dll
