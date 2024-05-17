@@ -1,0 +1,7 @@
+2024-05-17T20:02:29.8131666+02:00  [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development. (4007092b)
+2024-05-17T20:02:30.0505721+02:00  [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-17T20:03:13.3874680+02:00  [INF] Now listening on: "https://localhost:7240" (d826f4b8)
+2024-05-17T20:03:13.3921477+02:00  [INF] Now listening on: "http://localhost:5271" (d826f4b8)
+2024-05-17T20:03:13.4022728+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-05-17T20:03:13.4039177+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-05-17T20:03:13.4052170+02:00  [INF] Content root path: "C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Api\" (b5d60022)

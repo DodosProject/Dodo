@@ -2,28 +2,28 @@ using DoDo.Data;
 using DoDo.Models;
 
 namespace DoDo.Business;
-public class DoDo : IDoTaskService
+public class DoTaskService : IDoTaskService
 {
 
-    private readonly IDoTaskRepository _repository;
-    public DoTaskService(IDoTaskRepository repository)
+    private readonly IDoTaskRepository _DoTaskrepository;
+    public DoTaskService(IDoTaskRepository doTaskrepository)
     {
-        _repository = repository;
+        _DoTaskrepository = doTaskrepository;
     }
     public IEnumerable<DoTaskDTO> GetAllDoTasks(DoTaskQueryParameters? taskQueryParameters, string? sortBy)
     {
 
-        var tasks = _repository.GetAllDoTasks();
+        var tasks = _DoTaskrepository.GetAllDoTasks();
 
         var tasksDTO = tasks.Select(b => new DoTaskDTO
         {
             DoTaskId = b.DoTaskId,
             Title = b.Title,
-            Author = b.Author,
-            Genre = b.Genre,
-            Year = b.Year,
-            Copies = b.Copies,
-            Score = b.Score,
+            Description = b.Description,
+            CreationDate = b.CreationDate,
+            Completed = b.Completed,
+            Priority = b.Priority,
+            UserId = b.UserId
         }).ToList();
         
          var query = tasksDTO.AsQueryable();
@@ -33,41 +33,52 @@ public class DoDo : IDoTaskService
             query = query.Where(bk => bk.Title.ToLower().Contains(taskQueryParameters.Title.ToLower()));
         }
 
-        if (!string.IsNullOrWhiteSpace(taskQueryParameters.Author))
+        if (!string.IsNullOrWhiteSpace(taskQueryParameters.Description))
         {
-            query = query.Where(bk => bk.Author.ToLower().Contains(taskQueryParameters.Author.ToLower()));
+            query = query.Where(bk => bk.Description.ToLower().Contains(taskQueryParameters.Description.ToLower()));
         }
 
-        if (!string.IsNullOrWhiteSpace(taskQueryParameters.Genre))
+        if (taskQueryParameters.Completed != null)
         {
-            query = query.Where(bk => bk.Genre.ToLower().Contains(taskQueryParameters.Genre.ToLower()));
+            query = query.Where(bw => bw.Completed == taskQueryParameters.Completed);
         }
 
-        if (taskQueryParameters.fromYear.HasValue && taskQueryParameters.toYear.HasValue)
+        if (taskQueryParameters.fromDate.HasValue && taskQueryParameters.toDate.HasValue)
         {
-            query = query.Where(bk => bk.Year >= taskQueryParameters.fromYear.Value 
-                                    && bk.Year <= taskQueryParameters.toYear.Value);
+            query = query.Where(bk => bk.CreationDate >= taskQueryParameters.fromDate.Value 
+                                    && bk.CreationDate <= taskQueryParameters.toDate.Value);
         }
-        else if (taskQueryParameters.fromYear.HasValue)
+        else if (taskQueryParameters.fromDate.HasValue)
         {
-            query = query.Where(bk => bk.Year >= taskQueryParameters.fromYear.Value);
+            query = query.Where(bk => bk.CreationDate >= taskQueryParameters.fromDate.Value);
         }
-        else if (taskQueryParameters.toYear.HasValue)
+        else if (taskQueryParameters.toDate.HasValue)
         {
-            query = query.Where(bk => bk.Year <= taskQueryParameters.toYear.Value);
+            query = query.Where(bk => bk.CreationDate <= taskQueryParameters.toDate.Value);
+        }
+
+        if (taskQueryParameters.FromPriority.HasValue && taskQueryParameters.ToPriority.HasValue)
+        {
+            query = query.Where(bk => bk.Priority >= taskQueryParameters.FromPriority.Value 
+                                    && bk.Priority <= taskQueryParameters.ToPriority.Value);
+        }
+        else if (taskQueryParameters.FromPriority.HasValue)
+        {
+            query = query.Where(bk => bk.Priority >= taskQueryParameters.FromPriority.Value);
+        }
+        else if (taskQueryParameters.ToPriority.HasValue)
+        {
+            query = query.Where(bk => bk.Priority <= taskQueryParameters.ToPriority.Value);
         }
 
 
         switch (sortBy.ToLower())
         {
-        case "year":
-            query = query.OrderBy(bk => bk.Year);
+        case "creationdate":
+            query = query.OrderBy(bk => bk.CreationDate);
             break;
-        case "copies":
-            query = query.OrderBy(bk => bk.Copies);
-            break;
-        case "score":
-            query = query.OrderBy(bk => bk.Score);
+        case "priority":
+            query = query.OrderBy(bk => bk.Priority);
             break;
         default:
             break;
@@ -80,49 +91,57 @@ public class DoDo : IDoTaskService
 
     public DoTaskDTO GetDoTask(int taskId)
     {
-        var task = _repository.GetDoTask(taskId);
+        var task = _DoTaskrepository.GetDoTask(taskId);
         var taskDTO = new DoTaskDTO
         {
-            DoTaskId = task.IdDoTask,
+            DoTaskId = task.DoTaskId,
             Title = task.Title,
-            Author = task.Author,
-            Genre = task.Genre,
-            Year = task.Year,
-            Copies = task.Copies,
-            Score = task.Score,
+            Description = task.Description,
+            CreationDate = task.CreationDate,
+            Completed = task.Completed,
+            Priority = task.Priority,
+            UserId = task.UserId
         };
         return taskDTO;
     }
 
-    public DoTask AddDoTask(DoTaskCreateDTO taskCreate)
+    public DoTask AddDoTask(DoTaskCreateDTO taskCreate, int userId)
     {
-        var task = new DoTask(taskCreate.Title, taskCreate.Author, taskCreate.Genre, taskCreate.Year, taskCreate.Copies, taskCreate.Score);
-            _repository.AddDoTask(task);
-            _repository.SaveChanges();
+        var task = new DoTask(taskCreate.Title, taskCreate.Description, taskCreate.Priority, userId);
+            _DoTaskrepository.AddDoTask(task);
+            _DoTaskrepository.SaveChanges();
             return task;
     }
 
     public void UpdateDoTask(int taskId, DoTaskCreateDTO taskUpdate)
     {
-        var task = _repository.GetDoTask(taskId);
+        var task = _DoTaskrepository.GetDoTask(taskId);
 
         task.Title = taskUpdate.Title;
-        task.Author = taskUpdate.Author;
-        task.Genre = taskUpdate.Genre;
-        task.Year = taskUpdate.Year;
-        task.Score = taskUpdate.Score;
-        _repository.UpdateDoTask(task);
-        _repository.SaveChanges();
+        task.Description = taskUpdate.Description;
+        task.Priority = taskUpdate.Priority;
+        _DoTaskrepository.UpdateDoTask(task);
+        _DoTaskrepository.SaveChanges();
+    }
+
+    public void CompleteDoTask(int taskId)
+    {
+        var task = _DoTaskrepository.GetDoTask(taskId);
+
+        task.Completed = true;
+       
+        _DoTaskrepository.UpdateDoTask(task);
+        _DoTaskrepository.SaveChanges();
     }
 
     public void DeleteDoTask(int taskId)
     {
-        var task = _repository.GetDoTask(taskId);
+        var task = _DoTaskrepository.GetDoTask(taskId);
         if (task == null)
         {
             throw new KeyNotFoundException($"Tarea {taskId} no encontrada.");
         }
 
-        _repository.DeleteDoTask(taskId);
+        _DoTaskrepository.DeleteDoTask(taskId);
     }
 }

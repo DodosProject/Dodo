@@ -63,9 +63,6 @@ public class UserService : IUserService
         case "registrationdate":
             query = query.OrderBy(usr => usr.RegistrationDate);
             break;
-        case "penaltyfee":
-            query = query.OrderBy(usr => usr.PenaltyFee);
-            break;
         default:
             break;
         }
@@ -86,6 +83,84 @@ public class UserService : IUserService
             RegistrationDate = user.RegistrationDate,
         };
         return userDTO;
+    }
+
+    public IEnumerable<DoTaskDTO> GetDoTasksByUserId(int userId, DoTaskQueryParameters? taskQueryParameters, string? sortBy)
+    {
+        var tasks = _repository.GetDoTasksByUserId(userId).AsQueryable();
+
+        var tasksDTO = tasks.Select(b => new DoTaskDTO
+        {
+            DoTaskId = b.DoTaskId,
+            Title = b.Title,
+            Description = b.Description,
+            CreationDate = b.CreationDate,
+            Completed = b.Completed,
+            Priority = b.Priority,
+            UserId = b.UserId
+        }).ToList();
+        
+         var query = tasksDTO.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(taskQueryParameters.Title))
+        {
+            query = query.Where(bk => bk.Title.ToLower().Contains(taskQueryParameters.Title.ToLower()));
+        }
+
+        if (!string.IsNullOrWhiteSpace(taskQueryParameters.Description))
+        {
+            query = query.Where(bk => bk.Description.ToLower().Contains(taskQueryParameters.Description.ToLower()));
+        }
+
+        if (taskQueryParameters.Completed != null)
+        {
+            query = query.Where(bw => bw.Completed == taskQueryParameters.Completed);
+        }
+
+        if (taskQueryParameters.fromDate.HasValue && taskQueryParameters.toDate.HasValue)
+        {
+            query = query.Where(bk => bk.CreationDate >= taskQueryParameters.fromDate.Value 
+                                    && bk.CreationDate <= taskQueryParameters.toDate.Value);
+        }
+        else if (taskQueryParameters.fromDate.HasValue)
+        {
+            query = query.Where(bk => bk.CreationDate >= taskQueryParameters.fromDate.Value);
+        }
+        else if (taskQueryParameters.toDate.HasValue)
+        {
+            query = query.Where(bk => bk.CreationDate <= taskQueryParameters.toDate.Value);
+        }
+
+        if (taskQueryParameters.FromPriority.HasValue && taskQueryParameters.ToPriority.HasValue)
+        {
+            query = query.Where(bk => bk.Priority >= taskQueryParameters.FromPriority.Value 
+                                    && bk.Priority <= taskQueryParameters.ToPriority.Value);
+        }
+        else if (taskQueryParameters.FromPriority.HasValue)
+        {
+            query = query.Where(bk => bk.Priority >= taskQueryParameters.FromPriority.Value);
+        }
+        else if (taskQueryParameters.ToPriority.HasValue)
+        {
+            query = query.Where(bk => bk.Priority <= taskQueryParameters.ToPriority.Value);
+        }
+
+
+        switch (sortBy.ToLower())
+        {
+        case "creationdate":
+            query = query.OrderBy(bk => bk.CreationDate);
+            break;
+        case "priority":
+            query = query.OrderBy(bk => bk.Priority);
+            break;
+        default:
+            break;
+        }
+
+        var result = query.ToList();
+
+        return result;
     }
 
     public void UpdateUser(int userId, UserUpdateDTO userUpdate)

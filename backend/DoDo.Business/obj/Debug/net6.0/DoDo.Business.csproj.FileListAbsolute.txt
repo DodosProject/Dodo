@@ -1,0 +1,17 @@
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\bin\Debug\net6.0\DoDo.Business.deps.json
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\bin\Debug\net6.0\DoDo.Business.dll
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\bin\Debug\net6.0\DoDo.Business.pdb
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\bin\Debug\net6.0\DoDo.Data.dll
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\bin\Debug\net6.0\DoDo.Models.dll
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\bin\Debug\net6.0\DoDo.Models.pdb
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\bin\Debug\net6.0\DoDo.Data.pdb
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\obj\Debug\net6.0\DoDo.Business.csproj.AssemblyReference.cache
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\obj\Debug\net6.0\DoDo.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\obj\Debug\net6.0\DoDo.Business.AssemblyInfoInputs.cache
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\obj\Debug\net6.0\DoDo.Business.AssemblyInfo.cs
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\obj\Debug\net6.0\DoDo.Business.csproj.CoreCompileInputs.cache
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\obj\Debug\net6.0\DoDo.Business.csproj.CopyComplete
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\obj\Debug\net6.0\DoDo.Business.dll
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\obj\Debug\net6.0\refint\DoDo.Business.dll
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\obj\Debug\net6.0\DoDo.Business.pdb
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Business\obj\Debug\net6.0\ref\DoDo.Business.dll

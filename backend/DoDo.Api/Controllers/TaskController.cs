@@ -14,11 +14,13 @@ public class DoTaskController : ControllerBase
 
     private readonly ILogger<DoTaskController> _logger;
     private readonly IDoTaskService _taskService;
+    private readonly IAuthService _authService;
 
-    public DoTaskController(ILogger<DoTaskController> logger, IDoTaskService taskService)
+    public DoTaskController(ILogger<DoTaskController> logger, IDoTaskService taskService,  IAuthService authService)
     {
         _logger = logger;
         _taskService = taskService;
+        _authService = authService;
     }
 
     [HttpGet(Name = "GetDoTasks")]
@@ -59,7 +61,9 @@ public class DoTaskController : ControllerBase
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
         try {
-            var task = _taskService.AddDoTask(taskCreate);
+            var userId = _authService.GetUserClaimId(HttpContext.User);
+            if (userId < 0) {return BadRequest(); }
+            var task = _taskService.AddDoTask(taskCreate, userId);
             return Ok(task);
         }     
         catch (Exception ex)
@@ -77,6 +81,22 @@ public class DoTaskController : ControllerBase
         try
         {
             _taskService.UpdateDoTask(taskId, taskUpdate);
+            return Ok(_taskService.GetDoTask(taskId));
+        }
+        catch (KeyNotFoundException ex)
+        {
+            _logger.LogInformation(ex.ToString());
+           return NotFound(ex.Message);
+        }
+    }
+
+    [HttpPut("{taskId}/complete", Name = "CompleteDoTask")]
+    public IActionResult CompleteDoTask(int taskId)
+    {
+        if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
+        try
+        {
+            _taskService.CompleteDoTask(taskId);
             return Ok(_taskService.GetDoTask(taskId));
         }
         catch (KeyNotFoundException ex)

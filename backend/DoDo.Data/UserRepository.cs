@@ -39,6 +39,23 @@ public class UserRepository : IUserRepository
         return user;
     }
 
+    public IEnumerable<DoTask> GetDoTasksByUserId(int userId)
+    {
+        var user = _context.Users
+            .Include(usr => usr.Tasks) // Incluir prestamos relacionados, pero ojo con referencia circular ;-)
+            .FirstOrDefault(usr => usr.UserId == userId);
+
+        var user1 = GetUser(userId);
+
+        if (user1 is null) {
+            throw new KeyNotFoundException("Usuario no encontrado.");
+        } else if (user1.Tasks is null || user1.Tasks.Count == 0) {
+            throw new KeyNotFoundException("No se encontraron tareas.");
+        }
+
+        return user.Tasks;
+    }
+
     public void UpdateUser(User user)
     {
         _context.Entry(user).State = EntityState.Modified;

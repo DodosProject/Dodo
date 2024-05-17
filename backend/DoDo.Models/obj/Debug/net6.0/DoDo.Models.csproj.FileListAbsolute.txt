@@ -1,0 +1,12 @@
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\bin\Debug\net6.0\DoDo.Models.deps.json
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\bin\Debug\net6.0\DoDo.Models.dll
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\bin\Debug\net6.0\DoDo.Models.pdb
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.csproj.AssemblyReference.cache
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.AssemblyInfoInputs.cache
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.AssemblyInfo.cs
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.csproj.CoreCompileInputs.cache
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.dll
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\refint\DoDo.Models.dll
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\DoDo.Models.pdb
+C:\Users\S2-PC00\Desktop\DoDoAPI\backend\DoDo.Models\obj\Debug\net6.0\ref\DoDo.Models.dll

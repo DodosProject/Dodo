@@ -59,6 +59,25 @@ public class UserController : ControllerBase
         }
     }
 
+     [HttpGet("{userId}/tasks", Name = "GetDoTasksByUserId")]
+    public IActionResult GetDoTasksByUserId(int userId, [FromQuery] DoTaskQueryParameters taskQueryParameters, [FromQuery] string? sortBy)
+    {
+        if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
+        if (!_authService.HasAccessToResource(userId, HttpContext.User)) 
+            {return Forbid(); }
+        try
+        {
+            if (sortBy == null) {sortBy = "";}
+            var tasks = _userService.GetDoTasksByUserId(userId, taskQueryParameters, sortBy);
+            return Ok(tasks);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogInformation(ex.ToString());
+            return BadRequest(ex.Message);
+        }
+    }
+
     [HttpPut("{userId}")]
     public IActionResult UpdateUser(int userId, [FromBody] UserUpdateDTO userUpdate)
     {
