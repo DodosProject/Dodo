@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <div class="home">
     <h1>To Do List</h1>
     <TodoList />
@@ -18,4 +18,13 @@ import AddTodo from '@/components/AddTodo.vue'
   display: flex;
   justify-content: center;
 }
-</style>
+</style> -->
+<script setup lang="ts">
+import HomeComponent from '@/components/HomeComponent.vue'
+</script>
+
+<template>
+  <HomeComponent />
+</template>
+
+<style scoped></style>
