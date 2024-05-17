@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "TXcZ2wrL/uaCi6rom9/TSz4eypitzYFsQT4P6yZblPqnhWxJFqECrtBtXkULc9pcrsg+8wgILq8yIColcB6LuQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\S2-PC00\\Desktop\\DoDoAPI\\backend\\DoDo.Api\\DoDo.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\S2-PC00\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\S2-PC00\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\S2-PC00\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\S2-PC00\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\S2-PC00\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\S2-PC00\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
