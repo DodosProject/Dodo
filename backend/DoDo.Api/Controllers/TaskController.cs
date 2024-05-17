@@ -9,27 +9,26 @@ namespace API.Controllers;
 [ApiController]
 [Authorize]
 [Route("[controller]")]
-public class TaskController : ControllerBase
+public class DoTaskController : ControllerBase
 {
 
-    private readonly ILogger<TaskController> _logger;
-    private readonly ITaskService _taskService;
+    private readonly ILogger<DoTaskController> _logger;
+    private readonly IDoTaskService _taskService;
 
-    public TaskController(ILogger<TaskController> logger, ITaskService taskService)
+    public DoTaskController(ILogger<DoTaskController> logger, IDoTaskService taskService)
     {
         _logger = logger;
         _taskService = taskService;
     }
 
-    [AllowAnonymous]
-    [HttpGet(Name = "GetTasks")]
-    public ActionResult<IEnumerable<Task>> GetTasks([FromQuery] TaskQueryParameters taskQueryParameters, [FromQuery] string? sortBy)
+    [HttpGet(Name = "GetDoTasks")]
+    public ActionResult<IEnumerable<DoTask>> GetDoTasks([FromQuery] DoTaskQueryParameters taskQueryParameters, [FromQuery] string? sortBy)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
         try 
         {
             if (sortBy == null) {sortBy = "";}
-            var tasks = _taskService.GetAllTasks(taskQueryParameters, sortBy);
+            var tasks = _taskService.GetAllDoTasks(taskQueryParameters, sortBy);
             return Ok(tasks);
         }     
         catch (Exception ex)
@@ -39,47 +38,28 @@ public class TaskController : ControllerBase
         }
     }
 
-    [Authorize(Roles = Roles.Admin)]
-    [HttpGet("{taskId}/borrowings", Name = "GetBorrowingsByTaskId")]
-    public IActionResult AdminGetBorrowingsByTaskId(int taskId, [FromQuery] TaskQueryParameters taskQueryParameters, [FromQuery] string? sortBy)
-    {
-        if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
-        try
-        {
-            if (sortBy == null) {sortBy = "";}
-            var borrowings = _taskService.GetBorrowingsByTaskId(taskId, taskQueryParameters, sortBy);
-            return Ok(borrowings);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogInformation(ex.ToString());
-           return BadRequest(ex.Message);
-        }
-    }
-
-    [AllowAnonymous]
-    [HttpGet("{taskId}", Name = "GetTask")]
-    public IActionResult GetTask(int taskId)
+    [HttpGet("{taskId}", Name = "GetDoTask")]
+    public IActionResult GetDoTask(int taskId)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); }
         try
         {  
-            var task = _taskService.GetTask(taskId);
+            var task = _taskService.GetDoTask(taskId);
             return Ok(task);
         }
         catch (KeyNotFoundException ex)
         {
             _logger.LogInformation(ex.ToString());
-           return NotFound("No se ha encontrado el libro " + taskId);
+           return NotFound("No se ha encontrado la tarea " + taskId);
         }
     }
 
     [HttpPost()]
-    public IActionResult CreateTask([FromBody] TaskCreateDTO taskCreate)
+    public IActionResult CreateDoTask([FromBody] DoTaskCreateDTO taskCreate)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
         try {
-            var task = _taskService.AddTask(taskCreate);
+            var task = _taskService.AddDoTask(taskCreate);
             return Ok(task);
         }     
         catch (Exception ex)
@@ -90,15 +70,14 @@ public class TaskController : ControllerBase
         
     }
 
-    [Authorize(Roles = Roles.Admin)]
-    [HttpPut("{taskId}", Name = "UpdateTask")]
-    public IActionResult AdminUpdateTask(int taskId, [FromBody] TaskUpdateDTO taskUpdate)
+    [HttpPut("{taskId}", Name = "UpdateDoTask")]
+    public IActionResult UpdateDoTask(int taskId, [FromBody] DoTaskCreateDTO taskUpdate)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
         try
         {
-            _taskService.UpdateTask(taskId, taskUpdate);
-            return Ok(_taskService.GetTask(taskId));
+            _taskService.UpdateDoTask(taskId, taskUpdate);
+            return Ok(_taskService.GetDoTask(taskId));
         }
         catch (KeyNotFoundException ex)
         {
@@ -107,36 +86,19 @@ public class TaskController : ControllerBase
         }
     }
 
-    [HttpPut("{taskId}/copies")]
-    public IActionResult UpdateCopiesOfTask(int taskId, [FromBody] TaskAddCopiesDTO taskAddCopies)
-    {
-        if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
-        try
-        {
-            _taskService.UpdateCopiesOfTask(taskId, taskAddCopies);
-            return Ok(_taskService.GetTask(taskId));
-        }
-        catch (KeyNotFoundException ex)
-        {
-            _logger.LogInformation(ex.ToString());
-           return NotFound("No se ha podudo actualizar el libro.");
-        }
-    }
-
-    [Authorize(Roles = Roles.Admin)]
     [HttpDelete("{taskId}")]
-    public IActionResult AdminDeleteTask(int taskId)
+    public IActionResult DeleteDoTask(int taskId)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); }
         try
         {
-            _taskService.DeleteTask(taskId);
-            return Ok($"Libro {taskId} eliminado correctamente.");
+            _taskService.DeleteDoTask(taskId);
+            return Ok($"Tarea {taskId} eliminada correctamente.");
         }
         catch (KeyNotFoundException ex)
         {
             _logger.LogInformation(ex.ToString());
-            return NotFound("No se ha podido eliminar el libro.");
+            return NotFound("No se ha podido eliminar la tarea.");
         }
     }
 }

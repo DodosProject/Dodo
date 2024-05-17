@@ -22,7 +22,6 @@ public class UserController : ControllerBase
         _authService = authService;
     }
 
-    [Authorize(Roles = Roles.Admin)]
     [HttpGet(Name = "GetUsers")]
     public ActionResult<IEnumerable<UserLogedDTO>> AdminGetUsers([FromQuery] UserQueryParameters userQueryParameters, [FromQuery] string? sortBy)
     {
@@ -33,26 +32,6 @@ public class UserController : ControllerBase
             var users = _userService.GetAllUsers(userQueryParameters, sortBy);
             return Ok(users);
         }     
-        catch (Exception ex)
-        {
-            _logger.LogInformation(ex.ToString());
-            return BadRequest(ex.Message);
-        }
-    }
-
-    
-    [HttpGet("{userId}/borrowings", Name = "GetBorrowingsByUserId")]
-    public IActionResult GetBorrowingsByUserId(int userId, [FromQuery] UserQueryParameters userQueryParameters, [FromQuery] string? sortBy)
-    {
-        if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
-        if (!_authService.HasAccessToResource(userId, HttpContext.User)) 
-            {return Forbid(); }
-        try
-        {
-            if (sortBy == null) {sortBy = "";}
-            var borrowings = _userService.GetBorrowingsByUserId(userId, userQueryParameters, sortBy);
-            return Ok(borrowings);
-        }
         catch (Exception ex)
         {
             _logger.LogInformation(ex.ToString());
@@ -89,24 +68,6 @@ public class UserController : ControllerBase
         try
         {
             _userService.UpdateUser(userId, userUpdate);
-            return Ok(_userService.GetUser(userId));
-        }
-        catch (KeyNotFoundException ex)
-        {
-            _logger.LogInformation(ex.ToString());
-            return NotFound("No encontrado el usuario " + userId);
-        }
-    }
-
-    [HttpPut("{userId}/paypenaltyfee")]
-    public IActionResult PayPenaltyFee(int userId)
-    {
-        if (!ModelState.IsValid)  {return BadRequest(ModelState); }
-        if (!_authService.HasAccessToResource(userId, HttpContext.User)) 
-            {return Forbid(); }
-        try
-        {
-            _userService.PayPenaltyFee(userId);
             return Ok(_userService.GetUser(userId));
         }
         catch (KeyNotFoundException ex)
