@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import TodoList from "@/components/TodoList.vue";
-import AddTodo from "@/components/AddTodo.vue";
+import TodoList from '@/components/TodoList.vue'
+import AddTodo from '@/components/AddTodo.vue'
 </script>
 
 <style lang="scss" scoped>
