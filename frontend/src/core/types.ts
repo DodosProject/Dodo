@@ -5,3 +5,13 @@ export interface User {
   password: string
   registrationDate: Date
 }
+export interface DoTask {
+  taskId: number
+  title: string
+  description: string
+  creationDate: number
+  completed: Boolean
+  priority: number
+  //owner: ?
+  //userId: number
+}

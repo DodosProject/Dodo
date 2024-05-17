@@ -9,12 +9,12 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useTodoStore } from '@/stores/todoStore'
+import { useToDoStore } from '@/stores/todoStore'
 import AddTodo from './AddTodo.vue'
 import TodoItem from './TodoItem.vue'
 
 const text = ref('')
-const store = useTodoStore()
+const store = useToDoStore()
 const todos = store.todos
 
 const fetchTodos = () => {

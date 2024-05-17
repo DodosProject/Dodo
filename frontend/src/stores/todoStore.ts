@@ -1,34 +1,35 @@
+import type { DoTask } from '@/core/types'
 import { defineStore } from 'pinia'
 
-interface Todo {
-  id: number
-  text: string
-  completed: boolean
-}
-
-export const useTodoStore = defineStore('todoStore', {
+export const useToDoStore = defineStore('todoStore', {
   state: () => ({
-    todos: [] as Todo[]
+    todos: [] as DoTask[]
   }),
   actions: {
     async fetchTodos() {
       // Simulate API call
       this.todos = [
-        { id: 1, text: 'Learn Vue 3', completed: false },
-        { id: 2, text: 'Learn Pinia', completed: false }
+        {
+          taskId: 1,
+          title: 'test',
+          description: 'test description',
+          creationDate: 1,
+          completed: false,
+          priority: 1
+        }
       ]
     },
-    addTodo(todo: Todo) {
+    addTodo(todo: DoTask) {
       this.todos.push(todo)
     },
-    toggleTodoCompletion(id: number) {
-      const todo = this.todos.find((todo) => todo.id === id)
+    toggleTodoCompletion(taskId: number) {
+      const todo = this.todos.find((todo) => todo.taskId === taskId)
       if (todo) {
         todo.completed = !todo.completed
       }
     },
-    removeTodo(id: number) {
-      this.todos = this.todos.filter((todo) => todo.id !== id)
+    removeTodo(taskId: number) {
+      this.todos = this.todos.filter((todo) => todo.taskId !== taskId)
     }
   }
 })

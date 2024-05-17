@@ -7,10 +7,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useTodoStore } from '@/stores/todoStore'
+import { useToDoStore } from '@/stores/todoStore'
 
 const text = ref('')
-const store = useTodoStore()
+const store = useToDoStore()
 
 const addTodo = () => {
   if (text.value.trim()) {

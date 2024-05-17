@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTodoStore } from '@/stores/todoStore'
+import { useToDoStore } from '@/stores/todoStore'
 
 const props = defineProps<{
   todo: {
@@ -19,7 +19,7 @@ const props = defineProps<{
 
 const emit = defineEmits(['update', 'remove'])
 
-const store = useTodoStore()
+const store = useToDoStore()
 
 const toggleCompletion = () => {
   store.toggleTodoCompletion(props.todo.id)
