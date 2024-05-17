@@ -1,9 +1,45 @@
-# Diseño
-Realiza la maquetación del sitio usando Sass, con al menos un mixin y explica la elección de colores, fuentes y espacios del sitio web
+# DoDoWeb
 
-# Funcionalidad (web)
-La aplicación web debe listar el contenido de, al menos, un par de clases del modelo de datos en dos páginas diferentes. Además, deberá incluir algún tipo de mecanismo de autenticación (no obligatoriamente contra backend). Se deberá crear la aplicación mediante Vue 3, utilizar Pinia para la gestión centralizada del estado y, deberá utilizarse vue-router para la configuración de las rutas de la aplicación (incluidos los guards). 
+This template should help get you started developing with Vue 3 in Vite.
 
-# Funcionalidad (web)
-Integra alguna librería de componentes gráficos, incluyendo algún componente avanzado (que no sea un botón, input text..)
+## Recommended IDE Setup
 
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+
+## Type Support for `.vue` Imports in TS
+
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
+
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test:unit
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```
