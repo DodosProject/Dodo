@@ -8,16 +8,14 @@ export const useUserStore = defineStore('userStore', () => {
   const authStore = useAuthStore()
   const user = reactive<User>({
     userId: 0,
-    userName: '',
+    name: '',
     email: '',
     password: '',
-    registrationDate: new Date(),
-    penaltyFee: 0,
-    role: ''
+    registrationDate: new Date()
   })
 
   async function fetchUsers() {
-    if (!authStore.token || !authStore.isAuthenticated || authStore.role != 'admin') {
+    if (!authStore.token || !authStore.isAuthenticated) {
       console.error('No autorizado: Token no disponible')
       return
     }

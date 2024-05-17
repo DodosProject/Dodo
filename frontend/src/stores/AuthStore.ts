@@ -11,28 +11,24 @@ export const useAuthStore = defineStore('authStore', () => {
 
   const isAuthenticated = ref(false)
   //const role = ref<string | null>(localStorage.getItem('role') ?? null)
-  //const token = ref<string | null>(localStorage.getItem('token') ?? null)
-  //const decodedToken = ref<DecodedToken | null>()
+  const token = ref<string | null>(localStorage.getItem('token') ?? null)
+  const decodedToken = ref<DecodedToken | null>()
   const router = useRouter()
   const userIdLoged = ref<number>(0)
 
-  /*
   function setToken(newToken: string) {
     token.value = newToken
     localStorage.setItem('token', newToken)
     decodedToken.value = decodeJwt(newToken)
     if (decodedToken.value) {
       isAuthenticated.value = true
-      role.value = decodedToken.value.role
+      //role.value = decodedToken.value.role
       userIdLoged.value = parseInt(decodedToken.value.nameid, 10)
-      localStorage.setItem('role', decodedToken.value.role)
+      //localStorage.setItem('role', decodedToken.value.role)
     }
-    
   }
-  */
-/*
+
   function decodeJwt(token: string): DecodedToken | null {
-    
     if (!token) {
       return null
     }
@@ -55,7 +51,6 @@ export const useAuthStore = defineStore('authStore', () => {
       return null
     }
   }
-  */
 
   const login = async (email: string, password: string) => {
     try {
@@ -72,7 +67,7 @@ export const useAuthStore = defineStore('authStore', () => {
       }
 
       const data = await response.text()
-      //setToken(data)
+      setToken(data)
     } catch (error) {
       console.error('Error al iniciar sesión:', error)
     }
@@ -99,28 +94,20 @@ export const useAuthStore = defineStore('authStore', () => {
   }
 
   function logout() {
-    //localStorage.removeItem('token')
+    localStorage.removeItem('token')
     //localStorage.removeItem('role')
 
-   // token.value = null
+    token.value = null
     //role.value = null
     isAuthenticated.value = false
     userIdLoged.value = 0
-    //decodedToken.value = null
-
-    /*
-    const borrowingStore = useBorrowingStore()
-    borrowingStore.clearBorrowings()
-    const bookStore = useBookStore()
-    bookStore.clearBooks()
-    */
+    decodedToken.value = null
     const userStore = useUserStore()
     userStore.clearUsers()
 
     router.push('/login')
   }
 
-  /*
   function restoreSession() {
     const storedToken = localStorage.getItem('token')
     if (storedToken) {
@@ -130,12 +117,11 @@ export const useAuthStore = defineStore('authStore', () => {
       } else {
         setToken(storedToken)
         isAuthenticated.value = true
-        role.value = decodedToken.value.role
+        //role.value = decodedToken.value.role
         userIdLoged.value = parseInt(decodedToken.value.nameid, 10)
       }
     }
   }
-  
 
   function isTokenExpired(): boolean {
     if (!token.value) return true
@@ -152,26 +138,24 @@ export const useAuthStore = defineStore('authStore', () => {
     }
   }
 
-  restoreSession() */
+  restoreSession()
 
   return {
     baseUrl,
     isAuthenticated,
     //role,
-    //token,
+    token,
     userIdLoged,
     login,
     register,
     logout,
-    //restoreSession,
-    //isTokenExpired
+    restoreSession,
+    isTokenExpired
   }
 })
 
-/*
 interface DecodedToken {
   exp: number
   nameid: string
-  role: string
+  //role: string
 }
-*/
