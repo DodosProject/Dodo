@@ -1965,8 +1965,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Data\\DoDo.Data.csproj": {
-              "projectPath": "D:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Data\\DoDo.Data.csproj"
+            "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Data\\DoDo.Data.csproj": {
+              "projectPath": "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Data\\DoDo.Data.csproj"
             },
             "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj": {
               "projectPath": "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj"

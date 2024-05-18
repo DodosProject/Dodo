@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sImE6BUSUL86QS8XBUn1yg3Dy4eay9NFf/g/3mDzHNa6iv3hMlXVoGalOLAq6yjwIzFfmHFuttLvqxjoX42LHg==",
+  "dgSpecHash": "GKN+Uikm25Xte8lMDQIxSQ/qgZbWmLlWFVLpdYNkmf7RCrdQOrEEbzsaMKJDK3iCPEEhtfsIdcXdNONTcfgz5Q==",
   "success": true,
-  "projectFilePath": "D:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Data\\DoDo.Data.csproj",
+  "projectFilePath": "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Data\\DoDo.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ignac\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\ignac\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
