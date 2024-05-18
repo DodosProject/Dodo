@@ -38,15 +38,15 @@ services:
         volumes:
             - logs:/app/Logs
 
-    # web-pre:
-    #     image: icbmasterchief/bookybook-web-pre
-    #     restart: unless-stopped
-    #     ports:
-    #         - 8001:80
-    #     depends_on:
-    #         - api-pre
-    #     networks:
-    #         - bookybook-pre
+    web:
+        image: icbmasterchief/dodoweb
+        restart: unless-stopped
+        ports:
+            - 8801:80
+        depends_on:
+            - api
+        networks:
+            - dodo
 
 volumes:
     db-data: {}

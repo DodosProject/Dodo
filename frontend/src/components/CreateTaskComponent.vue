@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { useToDoStore } from '@/stores/todoStore'
 import type { DoTask } from '@/core/types'
-import router from '@/router';
+import router from '@/router'
 
 const todo = ref<DoTask>({
   doTaskId: 0,

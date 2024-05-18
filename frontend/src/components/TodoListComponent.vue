@@ -10,9 +10,8 @@ const todoStore = useToDoStore()
 const authStore = useAuthStore()
 const todos = computed(() => todoStore.todos)
 
-
 const handleTaskCompleted = (id: number) => {
- todoStore.fetchCompleteTodo(id)
+  todoStore.fetchCompleteTodo(id)
 }
 
 const handledTaskDeleted = (id: number) => {
