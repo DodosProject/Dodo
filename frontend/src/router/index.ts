@@ -14,7 +14,13 @@ const router = createRouter({
       path: '/list',
       name: 'list',
       meta: { requiresAuth: true },
-      component: () => import('../views/TodoListView.vue')
+      component: () => import('@/views/TodoListView.vue')
+    },
+    {
+      path: '/maketask',
+      name: 'maketask',
+      meta: { requiresAuth: true },
+      component: () => import('@/views/MakeTodoView.vue')
     }
   ]
 })

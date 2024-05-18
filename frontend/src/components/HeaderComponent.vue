@@ -12,7 +12,10 @@ authStore.isAuthenticated
     <nav>
       <RouterLink class="nav-btn" v-if="!authStore.isAuthenticated" to="/login">Login</RouterLink>
       <a class="nav-btn" @click="authStore.logout()" v-if="authStore.isAuthenticated">Logout</a>
-      <RouterLink class="nav-btn" v-if="authStore.isAuthenticated" to="/list">TODO List</RouterLink>
+      <RouterLink class="nav-btn" v-if="authStore.isAuthenticated" to="/list">ToDo List</RouterLink>
+      <RouterLink class="nav-btn" v-if="authStore.isAuthenticated" to="/maketask"
+        >Make task</RouterLink
+      >
     </nav>
   </div>
 </template>
