@@ -53,7 +53,7 @@ const submitTask = () => {
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="12">
+      <v-col>
         <v-card>
           <v-card-title>Make a new Task</v-card-title>
           <v-card-text>
