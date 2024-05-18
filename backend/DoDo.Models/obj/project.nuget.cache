@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "IoQetM1vbV5NAVaFc4fl7vQKlYFLWjM5ppenxUGb88Qz3G69voVIeFm6L2hjK+6LdaN9vRhvwks8RvQy990i0g==",
+  "dgSpecHash": "25N2k6vtkOYh1+SGpSbiXIjCnrU2yUwfpTgWK/EThdfNdvWmIRAlJVnoFqJoEraPlnic4ReK1rNAhBVKCuGzRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\S2-PC00\\Desktop\\DoDoAPI\\backend\\DoDo.Models\\DoDo.Models.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ignac\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\ignac\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\ignac\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512"
+  ],
   "logs": []
 }
