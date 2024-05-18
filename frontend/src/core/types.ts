@@ -6,7 +6,7 @@ export interface User {
   registrationDate: Date
 }
 export interface DoTask {
-  taskId: number
+  doTaskId: number
   title: string
   description: string
   creationDate: Date

@@ -9,28 +9,14 @@ import TodoItemComponent from './TodoItemComponent.vue'
 const todoStore = useToDoStore()
 const authStore = useAuthStore()
 const todos = computed(() => todoStore.todos)
-const showDetails = ref(false)
 
-// const todoDetail = reactive<DoTask>({
-//   taskId: 0,
-//   title: '',
-//   description: '',
-//   creationDate: new Date(),
-//   completed: false,
-//   priority: 0,
-//   userId: 0
-// })
 
 const handleTaskCompleted = (id: number) => {
-  //todoStore.fetchComplete(id)
-  let foundTask = todoStore.todos.find((td) => td.taskId === id)
-  if (foundTask) {
-    foundTask.completed = true
-  }
+ todoStore.fetchCompleteTodo(id)
 }
 
 const handledTaskDeleted = (id: number) => {
-  todoStore.fetchDelete(id)
+  todoStore.fetchDeleteTodo(id)
 }
 
 onMounted(async () => {
@@ -48,7 +34,7 @@ onMounted(async () => {
             <v-list>
               <todo-item-component
                 v-for="todo in todos"
-                :key="todo.taskId"
+                :key="todo.doTaskId"
                 :todo="todo"
                 @todoCompleted="handleTaskCompleted"
                 @todoDeleted="handledTaskDeleted"
