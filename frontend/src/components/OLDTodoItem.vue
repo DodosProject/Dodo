@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="todo-item">
     <input type="checkbox" v-model="tasks.completed" @change="toggleCompletion" />
     <div>
@@ -51,3 +51,4 @@ const removeTodo = () => {
   margin-left: auto;
 }
 </style>
+-->

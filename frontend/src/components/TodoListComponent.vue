@@ -1,91 +1,73 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { useToDoStore } from '@/stores/todoStore'
+import { useRouter } from 'vue-router'
 import type { DoTask } from '@/core/types'
-
+import TodoItemComponent from './TodoItemComponent.vue'
 
 const todoStore = useToDoStore()
 
-const listItem = ref<DoTask>({
+const showDetails = ref(false)
+const todos = todoStore.todos
+const todoDetail = reactive<DoTask>({
   taskId: 0,
-  title: 'asdfasda',
+  title: '',
   description: '',
   creationDate: 0,
   completed: false,
   priority: 0
-}) 
+})
 
-const props = defineProps<{
-  tasks: {
-    taskId: number
-    title: string
-    description: string
-    creationDate: number
-    completed: boolean
-    priority: number
-  }
-}>()
-
-const emit = defineEmits(['update', 'remove'])
-
-const store = useToDoStore()
-
+const handleTaskSelected = (todos: DoTask) => {
+  Object.assign(todoDetail, todos)
+  showDetails.value = true
+}
 
 onMounted(async () => {
   const data = await todoStore.fetchTodos()
   if (data != null) {
-    listItem.value = data
+    todos.values = data
   }
 })
-
-const toggleCompletion = () => {
-  store.toggleTodoCompletion(props.tasks.taskId)
-  emit('update')
-}
-
-const removeTodo = () => {
-  store.removeTodo(props.tasks.taskId)
-  emit('remove')
-}
 </script>
 
 <template>
-  <v-list-item>
-    <div class="todo-item">
-      <input type="checkbox" />
-      <div><strong>Task: </strong>{{ listItem.title }}</div>
-      <div>
-          <!-- <span :class="{ completed: tasks.completed }">{{ tasks.title }}</span> -->
-      </div>
-      <button @click="removeTodo">Remove</button>
-    </div>
-    <div class="divider">
-      <v-divider></v-divider>
-    </div>
-  </v-list-item>
-
- <!--  <v-list>
-    <TodoItem
-      v-for="task in tasks"
-      :key="props.tasks.taskId"
-      :tasks="props.tasks.taskId"
-      @returnList="returnList"
-    />
-  </v-list> -->
-
-
-  
+  <v-container>
+    <v-row>
+      <v-col cols="8">
+        <h1 class="display-2">To Do List</h1>
+        <v-card>
+          <v-card-text>
+            <v-list>
+              <test-todo-list-comp
+                v-for="todo in todos"
+                :key="todo.taskId"
+                :book="todo"
+                @taskSelected="handleTaskSelected"
+              />
+            </v-list>
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <!--   <v-col cols="4">
+        <Book-Details-Component v-if="showDetails" :book="bookDetails" />
+      </v-col> -->
+    </v-row>
+  </v-container>
 </template>
 
 <style scoped>
-.divider {
-  padding-top: 15px;
-  padding-bottom: 10px;
+.display-2 {
+  font-size: 2rem;
 }
 
-.todo-list {
-  padding: 20px;
-  background: #f4f4f9;
-  border-radius: 8px;
+.v-container {
+  padding-top: 0;
+}
+
+@media (max-width: 700px) {
+  .v-container {
+    padding-top: 100px;
+  }
 }
 </style>
