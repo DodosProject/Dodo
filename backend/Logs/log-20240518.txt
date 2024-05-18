@@ -1,0 +1,141 @@
+2024-05-18T10:47:54.8193830+02:00  [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development. (4007092b)
+2024-05-18T10:47:54.9720848+02:00  [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-18T10:48:18.5225435+02:00  [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development. (4007092b)
+2024-05-18T10:48:18.6739954+02:00  [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-18T10:48:19.1853755+02:00  [INF] Executed DbCommand ("224"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [DoDoDB];" (0723d8ff)
+2024-05-18T10:48:19.2783334+02:00  [INF] Executed DbCommand ("90"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [DoDoDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;" (0723d8ff)
+2024-05-18T10:48:19.2990328+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2024-05-18T10:48:19.3679720+02:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);" (0723d8ff)
+2024-05-18T10:48:19.3706551+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2024-05-18T10:48:19.3898622+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2024-05-18T10:48:19.3964325+02:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2024-05-18T10:48:19.4123274+02:00  [INF] Applying migration '"20240517195132_FirstMigration"'. (0e2ac64d)
+2024-05-18T10:48:19.4648989+02:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Users] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Password] nvarchar(max) NOT NULL,
+    [RegistrationDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2024-05-18T10:48:19.4684535+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [DoTasks] (
+    [Id] int NOT NULL IDENTITY,
+    [Title] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [CreationDate] datetime2 NOT NULL,
+    [Completed] bit NOT NULL,
+    [Priority] int NOT NULL,
+    [UserId] int NOT NULL,
+    CONSTRAINT [PK_DoTasks] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_DoTasks_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2024-05-18T10:48:19.4903517+02:00  [INF] Executed DbCommand ("21"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Email', N'Name', N'Password', N'RegistrationDate') AND [object_id] = OBJECT_ID(N'[Users]'))
+    SET IDENTITY_INSERT [Users] ON;
+INSERT INTO [Users] ([Id], [Email], [Name], [Password], [RegistrationDate])
+VALUES (1, N'admin@admin.com', N'Admin', N'admin', '2024-04-03T17:00:00.0000000'),
+(2, N'ignaciocasaus1cns@gmail.com', N'Ignacio', N'patata', '2024-04-04T19:00:00.0000000'),
+(3, N'emaildealex@gmail.com', N'Alex', N'pimiento', '2024-04-05T18:30:00.0000000'),
+(4, N'pepe@pepe.com', N'Pepe', N'pepe', '2024-04-15T19:30:00.0000000');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Email', N'Name', N'Password', N'RegistrationDate') AND [object_id] = OBJECT_ID(N'[Users]'))
+    SET IDENTITY_INSERT [Users] OFF;" (0723d8ff)
+2024-05-18T10:48:19.4983987+02:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Completed', N'CreationDate', N'Description', N'Priority', N'Title', N'UserId') AND [object_id] = OBJECT_ID(N'[DoTasks]'))
+    SET IDENTITY_INSERT [DoTasks] ON;
+INSERT INTO [DoTasks] ([Id], [Completed], [CreationDate], [Description], [Priority], [Title], [UserId])
+VALUES (10001, CAST(0 AS bit), '2024-05-15T19:30:00.0000000', N'Tengo que fregar el suelo', 1, N'Fregar', 1),
+(10002, CAST(0 AS bit), '2024-05-16T19:30:00.0000000', N'Hacer la compra de comida del mes', 1, N'Comprar', 1),
+(10003, CAST(1 AS bit), '2024-04-15T19:30:00.0000000', N'Ir al banco a ingresar dinero', 2, N'Banco', 3),
+(10004, CAST(0 AS bit), '2024-04-24T16:30:00.0000000', N'Leer 3 capítulos de La comunidad del anillo', 1, N'Leer', 2),
+(10005, CAST(1 AS bit), '2024-04-28T19:30:00.0000000', N'Hacer la colada de la ropa sucia', 3, N'Colada', 4),
+(10006, CAST(1 AS bit), '2024-05-15T19:30:00.0000000', N'Crear una App en Vue contenerizada', 4, N'Crear App', 3),
+(10007, CAST(1 AS bit), '2024-04-11T19:30:00.0000000', N'Clonar el repositorio que me han mandado', 2, N'Clonar repo', 3),
+(10008, CAST(0 AS bit), '2024-05-09T19:30:00.0000000', N'Desplegar la App en AWS', 1, N'Desplegar', 2);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Completed', N'CreationDate', N'Description', N'Priority', N'Title', N'UserId') AND [object_id] = OBJECT_ID(N'[DoTasks]'))
+    SET IDENTITY_INSERT [DoTasks] OFF;" (0723d8ff)
+2024-05-18T10:48:19.5015502+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_DoTasks_UserId] ON [DoTasks] ([UserId]);" (0723d8ff)
+2024-05-18T10:48:19.5034818+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240517195132_FirstMigration', N'6.0.0');" (0723d8ff)
+2024-05-18T10:48:19.8771531+02:00  [INF] Now listening on: "https://localhost:7240" (d826f4b8)
+2024-05-18T10:48:19.8781921+02:00  [INF] Now listening on: "http://localhost:5271" (d826f4b8)
+2024-05-18T10:48:19.8832986+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-05-18T10:48:19.8842119+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-05-18T10:48:19.8850684+02:00  [INF] Content root path: "D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Api\" (b5d60022)
+2024-05-18T10:48:46.6805492+02:00 0HN3N2T2BTCI3:00000005 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-18T10:48:47.2218935+02:00 0HN3N2T2BTCI3:00000005 [INF] Executed DbCommand ("39"ms) [Parameters=["@__ToLower_0='admin@admin.com' (Size = 4000), @__loginDTO_Password_1='admin' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name], [u].[Password], [u].[RegistrationDate]
+FROM [Users] AS [u]
+WHERE (LOWER([u].[Email]) = @__ToLower_0) AND ([u].[Password] = @__loginDTO_Password_1)" (0723d8ff)
+2024-05-18T10:49:02.2306621+02:00 0HN3N2T2BTCI3:00000007 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-18T10:49:02.2391622+02:00 0HN3N2T2BTCI3:00000007 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM [DoTasks] AS [d]" (0723d8ff)
+2024-05-18T10:49:26.4635848+02:00 0HN3N2T2BTCI3:00000009 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-18T10:49:26.4700618+02:00 0HN3N2T2BTCI3:00000009 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Id], [u].[Email], [u].[Name], [u].[Password], [u].[RegistrationDate]
+FROM [Users] AS [u]" (0723d8ff)
+2024-05-18T10:53:09.1076317+02:00  [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development. (4007092b)
+2024-05-18T10:53:09.2569977+02:00  [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-18T10:53:09.4995645+02:00  [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2024-05-18T10:53:09.5276862+02:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2024-05-18T10:53:09.5320194+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2024-05-18T10:53:09.5336745+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2024-05-18T10:53:09.5479270+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2024-05-18T10:53:09.5587540+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-05-18T10:53:09.6994336+02:00  [INF] Now listening on: "https://localhost:7240" (d826f4b8)
+2024-05-18T10:53:09.7003325+02:00  [INF] Now listening on: "http://localhost:5271" (d826f4b8)
+2024-05-18T10:53:09.7051926+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-05-18T10:53:09.7063697+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-05-18T10:53:09.7074069+02:00  [INF] Content root path: "D:\Escritorio\DoDoAPP\Dodo\backend\DoDo.Api\" (b5d60022)
+2024-05-18T10:53:23.2498558+02:00 0HN3N2VOMFFER:00000005 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-18T10:53:23.7223070+02:00 0HN3N2VOMFFER:00000005 [INF] Executed DbCommand ("30"ms) [Parameters=["@__ToLower_0='admin@admin.com' (Size = 4000), @__loginDTO_Password_1='admin' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name], [u].[Password], [u].[RegistrationDate]
+FROM [Users] AS [u]
+WHERE (LOWER([u].[Email]) = @__ToLower_0) AND ([u].[Password] = @__loginDTO_Password_1)" (0723d8ff)
+2024-05-18T10:53:54.5993433+02:00 0HN3N2VOMFFER:00000007 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-18T10:53:54.6060019+02:00 0HN3N2VOMFFER:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Id], [u].[Email], [u].[Name], [u].[Password], [u].[RegistrationDate]
+FROM [Users] AS [u]" (0723d8ff)
+2024-05-18T10:54:05.3194498+02:00 0HN3N2VOMFFER:00000009 [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
+2024-05-18T10:54:05.3979654+02:00 0HN3N2VOMFFER:00000009 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='1'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Email], [t].[Name], [t].[Password], [t].[RegistrationDate], [d].[Id], [d].[Completed], [d].[CreationDate], [d].[Description], [d].[Priority], [d].[Title], [d].[UserId]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name], [u].[Password], [u].[RegistrationDate]
+    FROM [Users] AS [u]
+    WHERE [u].[Id] = @__userId_0
+) AS [t]
+LEFT JOIN [DoTasks] AS [d] ON [t].[Id] = [d].[UserId]
+ORDER BY [t].[Id]" (0723d8ff)
+2024-05-18T10:54:05.4297335+02:00 0HN3N2VOMFFER:00000009 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='1'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name], [u].[Password], [u].[RegistrationDate]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__userId_0" (0723d8ff)
+2024-05-18T11:10:13.6147591+02:00  [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development. (4007092b)
+2024-05-18T11:10:13.7664745+02:00  [INF] Entity Framework Core "6.0.0" initialized '"DoDoContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "SensitiveDataLoggingEnabled " (d2805559)
