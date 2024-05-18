@@ -5,6 +5,16 @@
   font-weight: normal;
 }
 
+@mixin default-button {
+  height: 20px;
+  widht: 60px;
+  padding: 10px 5px;
+  margin: 0;
+  text-align: center;
+  color: black;
+  background-color: lightblue;
+}
+
 @media (min-width: 1024px) {
   body {
     display: flex;
@@ -15,7 +25,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
+    background-color: lightgray;
     .login-container {
       display: flex;
       text-align: left;
@@ -32,5 +42,77 @@
         }
       }
     }
+  }
+}
+
+.app-button {
+  @include default-button()
+}
+
+.delete-button{
+  height: 20px;
+  width: 60px;
+  padding: 10px 5px;
+  margin: 0;
+  text-align: center;
+  color: white;
+  background-color: red;
+}
+
+
+.headline {
+  font-size: 1rem;
+}
+
+.subtitle-1 {
+  font-size: 0.75rem;
+}
+
+.task-content {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.btn {
+  margin: 0px;
+  left: -20%;
+  font-size: 0.6rem;
+}
+
+@media (max-width: 1280px) {
+  .headline {
+    font-size: 0.75rem;
+  }
+
+  .subtitle-1 {
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width: 880px) {
+  .btn {
+    margin: 0px;
+    left: -20%;
+    font-size: 0.4rem;
+  }
+
+  .loan-btn {
+    margin: 0px;
+    font-size: 0.4rem;
+  }
+}
+
+.display-2 {
+  font-size: 2rem;
+}
+
+.v-container {
+  padding-top: 0;
+}
+
+@media (max-width: 700px) {
+  .v-container {
+    padding-top: 100px;
   }
 }

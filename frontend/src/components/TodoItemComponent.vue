@@ -28,56 +28,11 @@ const emitDelete = (id: number) => {
       >
     </v-list-item-content>
     <v-list-item-action class="task-content">
-      <v-btn v-if="!props.todo.completed" @click="emitComplete(props.todo.doTaskId)" class="btn">
+      <v-btn class="app-button" v-if="!props.todo.completed" @click="emitComplete(props.todo.doTaskId)">
         Complete
       </v-btn>
-      <v-btn @click="emitDelete(props.todo.doTaskId)" class="delete-btn">Delete</v-btn>
+      <v-btn class=".delete-button" @click="emitDelete(props.todo.doTaskId)">Delete</v-btn>
     </v-list-item-action>
     <v-divider></v-divider>
   </v-list-item>
 </template>
-
-<style scoped>
-.headline {
-  font-size: 1rem;
-}
-
-.subtitle-1 {
-  font-size: 0.75rem;
-}
-
-.task-content {
-  float: left;
-  width: 50%;
-  padding: 10px;
-}
-
-.btn {
-  margin: 0px;
-  left: -20%;
-  font-size: 0.6rem;
-}
-
-@media (max-width: 1280px) {
-  .headline {
-    font-size: 0.75rem;
-  }
-
-  .subtitle-1 {
-    font-size: 0.5rem;
-  }
-}
-
-@media (max-width: 880px) {
-  .btn {
-    margin: 0px;
-    left: -20%;
-    font-size: 0.4rem;
-  }
-
-  .loan-btn {
-    margin: 0px;
-    font-size: 0.4rem;
-  }
-}
-</style>
