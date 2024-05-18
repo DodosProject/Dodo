@@ -9,9 +9,8 @@ export interface DoTask {
   taskId: number
   title: string
   description: string
-  creationDate: number
+  creationDate: Date
   completed: Boolean
   priority: number
-  //owner: ?
-  //userId: number
+  userId: number
 }

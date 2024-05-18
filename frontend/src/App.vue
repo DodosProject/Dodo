@@ -1,19 +1,10 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import HeaderComponent from '@/components/HeaderComponent.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/DoDoApp.png" width="125" height="125" />
-
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/login">Login</RouterLink>
-        <RouterLink to="/list">TODO List</RouterLink>
-      </nav>
-    </div>
-  </header>
-
+  <HeaderComponent/>
   <RouterView />
 </template>
 
