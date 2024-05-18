@@ -1,34 +1,61 @@
+import type { DoTask } from '@/core/types'
 import { defineStore } from 'pinia'
+import { reactive, ref } from 'vue'
 
-interface Todo {
-  id: number
-  text: string
-  completed: boolean
-}
-
-export const useTodoStore = defineStore('todoStore', {
-  state: () => ({
-    todos: [] as Todo[]
-  }),
-  actions: {
-    async fetchTodos() {
-      // Simulate API call
-      this.todos = [
-        { id: 1, text: 'Learn Vue 3', completed: false },
-        { id: 2, text: 'Learn Pinia', completed: false }
-      ]
-    },
-    addTodo(todo: Todo) {
-      this.todos.push(todo)
-    },
-    toggleTodoCompletion(id: number) {
-      const todo = this.todos.find((todo) => todo.id === id)
-      if (todo) {
-        todo.completed = !todo.completed
+export const useToDoStore = defineStore('TodoStore', () => {
+ 
+    const todos = reactive<DoTask[]>([
+      {
+        taskId: 1,
+        title: 'test',
+        description: 'test description',
+        creationDate: new Date(),
+        completed: false,
+        priority: 1,
+        userId: 1
+      },
+      {
+        taskId: 2,
+        title: 'test2',
+        description: 'test description2',
+        creationDate: new Date(),
+        completed: false,
+        priority: 2,
+        userId: 1
+      },
+      {
+        taskId: 3,
+        title: 'test3',
+        description: 'test description3',
+        creationDate: new Date(),
+        completed: false,
+        priority: 3,
+        userId: 2
       }
-    },
-    removeTodo(id: number) {
-      this.todos = this.todos.filter((todo) => todo.id !== id)
+    ])
+
+    async function fetchTodos() {
+      // Simulate API call
     }
-  }
-})
+    // addTodo(todo: DoTask) {
+    //   this.todos.push(todo)
+    // }
+    // toggleTodoCompletion(taskId: number) {
+    //   const todo = this.todos.find((todo) => todo.taskId === taskId)
+    //   if (todo) {
+    //     todo.completed = !todo.completed
+    //   }
+    // }
+    // removeTodo(taskId: number) {
+    //   this.todos = this.todos.filter((todo) => todo.taskId !== taskId)
+    // }
+    async function fetchDelete(id: number) {
+
+    }
+    return {
+      todos,
+      fetchTodos,
+      fetchDelete
+      
+    }
+  })

@@ -39,6 +39,7 @@
     "vite": "^5.2.8",
     "vite-plugin-vue-devtools": "^7.0.25",
     "vitest": "^1.4.0",
+    "vue-cli-plugin-vuetify": "~2.5.8",
     "vue-tsc": "^2.0.11"
   }
 }

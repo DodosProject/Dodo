@@ -1,20 +1,20 @@
-<template>
+<!-- <template>
   <div class="todo-list">
     <AddTodo />
-    <div v-for="todo in todos" :key="todo.id">
-      <TodoItem :todo="todo" @update="fetchTodos" @remove="fetchTodos" />
+    <div v-for="todo in todos" :key="todo.taskId">
+      <TodoItem :todo="todo.title" @update="fetchTodos" @remove="fetchTodos" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { useTodoStore } from '@/stores/todoStore'
+import { onMounted } from 'vue'
+import { useToDoStore } from '@/stores/todoStore'
 import AddTodo from './AddTodo.vue'
 import TodoItem from './TodoItem.vue'
 
-const text = ref('')
-const store = useTodoStore()
+
+const store = useToDoStore()
 const todos = store.todos
 
 const fetchTodos = () => {
@@ -30,4 +30,4 @@ onMounted(fetchTodos)
   background: #f4f4f9;
   border-radius: 8px;
 }
-</style>
+</style> -->
