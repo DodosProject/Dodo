@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DoTask } from '@/core/types'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const isCompleted = ref(false)
 const props = defineProps<{
@@ -22,16 +22,18 @@ const emitDelete = (id: number) => {
   <v-list-item>
     <v-list-item-content class="task-content">
       <v-list-item-title class="headline">Task: {{ props.todo.title }}</v-list-item-title>
-      <v-list-item-subtitle class="subtitle-1">Description: {{ props.todo.description }}</v-list-item-subtitle>
-      <v-list-item-subtitle class="subtitle-1">Is Completed: {{ props.todo.completed }}</v-list-item-subtitle>
+      <v-list-item-subtitle class="subtitle-1"
+        >Description: {{ props.todo.description }}</v-list-item-subtitle
+      >
+      <v-list-item-subtitle class="subtitle-1"
+        >Is Completed: {{ props.todo.completed }}</v-list-item-subtitle
+      >
     </v-list-item-content>
     <v-list-item-action class="task-content">
       <v-btn @click="emitComplete(props.todo.taskId)" class="btn"> Complete </v-btn>
-      <v-btn
-        v-if="isCompleted"
-        @click="emitDelete(props.todo.taskId)"
-        class="delete-btn"
-        >Delete</v-btn>
+      <v-btn v-if="isCompleted" @click="emitDelete(props.todo.taskId)" class="delete-btn"
+        >Delete</v-btn
+      >
     </v-list-item-action>
     <v-divider></v-divider>
   </v-list-item>

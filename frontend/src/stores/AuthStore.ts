@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { useUserStore } from '@/stores/UserStore'
 
 export const useAuthStore = defineStore('authStore', () => {
-  const baseUrl = ref('http://localhost:7790') //PRO
+  const baseUrl = ref('http://localhost:7701') //PRO
   //const baseUrl = ref('http://localhost:7791') //PRE
   //const baseUrl = 'https://bookybookapi-pre.azurewebsites.net'
 
@@ -24,6 +24,7 @@ export const useAuthStore = defineStore('authStore', () => {
       //role.value = decodedToken.value.role
       userIdLoged.value = parseInt(decodedToken.value.nameid, 10)
       //localStorage.setItem('role', decodedToken.value.role)
+      console.log(JSON.stringify(decodedToken.value))
     }
   }
 
