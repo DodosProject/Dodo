@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj": {}
+    "D:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj": {}
   },
   "projects": {
-    "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj": {
+    "D:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj",
+        "projectUniqueName": "D:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj",
         "projectName": "DoDo.Models",
-        "projectPath": "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj",
+        "projectPath": "D:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\DoDo.Models.csproj",
         "packagesPath": "C:\\Users\\ignac\\.nuget\\packages\\",
-        "outputPath": "d:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\obj\\",
+        "outputPath": "D:\\Escritorio\\DoDoAPP\\Dodo\\backend\\DoDo.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ignac\\AppData\\Roaming\\NuGet\\NuGet.Config"

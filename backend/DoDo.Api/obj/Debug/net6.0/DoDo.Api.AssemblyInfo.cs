@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DoDo.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08574f31e81696b263601713f28fb0e821dea9ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33840dd41bb1ce6776bd98d9cb8ec98bb7575dc3")]
 [assembly: System.Reflection.AssemblyProductAttribute("DoDo.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DoDo.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
