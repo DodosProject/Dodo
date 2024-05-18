@@ -3,9 +3,11 @@ import { onMounted, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import type { DoTask } from '@/core/types'
 import { useToDoStore } from '@/stores/todoStore'
+import { useAuthStore } from '@/stores/AuthStore'
 import TodoItemComponent from './TodoItemComponent.vue'
 
 const todoStore = useToDoStore()
+const authStore = useAuthStore()
 const todos = computed(() => todoStore.todos)
 const showDetails = ref(false)
 
@@ -21,11 +23,10 @@ const showDetails = ref(false)
 
 const handleTaskCompleted = (id: number) => {
   //todoStore.fetchComplete(id)
-  let foundTask = todoStore.todos.find(td => td.taskId === id)
-  if (foundTask){
+  let foundTask = todoStore.todos.find((td) => td.taskId === id)
+  if (foundTask) {
     foundTask.completed = true
   }
-
 }
 
 const handledTaskDeleted = (id: number) => {
@@ -33,11 +34,7 @@ const handledTaskDeleted = (id: number) => {
 }
 
 onMounted(async () => {
-  // const data = await todoStore.fetchTodos()
-  // if (data != null) {
-  //   todos.values = data
-  // }
-  
+  await todoStore.fetchTodos(authStore.userIdLoged)
 })
 </script>
 
@@ -79,4 +76,3 @@ onMounted(async () => {
   }
 }
 </style>
-@/stores/TodoStore@/stores/todoStore@/stores/todoStore@/stores/TodoStore@/stores/todoStore

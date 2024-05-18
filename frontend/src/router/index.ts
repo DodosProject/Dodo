@@ -13,7 +13,7 @@ const router = createRouter({
     {
       path: '/list',
       name: 'list',
-      //meta: { requiresAuth: true },
+      meta: { requiresAuth: true },
       component: () => import('../views/TodoListView.vue')
     }
   ]
@@ -22,8 +22,12 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore()
 
-  if (!authStore.token) {
+  if (to.path === '/login') {
     next()
+    return
+  }
+  if (!authStore.token) {
+    next('/login')
     return
   }
 
