@@ -1,28 +1,37 @@
 <script setup lang="ts">
 import type { DoTask } from '@/core/types'
-import { useAuthStore } from '@/stores/AuthStore'
+import { ref } from 'vue';
 
-const authStore = useAuthStore()
-
+const isCompleted = ref(false)
 const props = defineProps<{
   todo: DoTask
 }>()
 
-const emit = defineEmits(['todoSelected'])
+const emit = defineEmits(['todoCompleted', 'todoDeleted'])
 
-const emitDetails = (todo: DoTask) => {
-  emit('todoSelected', todo)
+const emitComplete = (id: number) => {
+  emit('todoCompleted')
+}
+
+const emitDelete = (id: number) => {
+  emit('todoDeleted')
 }
 </script>
 
 <template>
   <v-list-item>
     <v-list-item-content class="task-content">
-      <v-list-item-title class="headline">{{ props.todo.title }}</v-list-item-title>
-      <v-list-item-subtitle class="subtitle-1">{{ props.todo.description }}</v-list-item-subtitle>
+      <v-list-item-title class="headline">Task: {{ props.todo.title }}</v-list-item-title>
+      <v-list-item-subtitle class="subtitle-1">Description: {{ props.todo.description }}</v-list-item-subtitle>
+      <v-list-item-subtitle class="subtitle-1">Is Completed: {{ props.todo.completed }}</v-list-item-subtitle>
     </v-list-item-content>
     <v-list-item-action class="task-content">
-      <v-btn @click="emitDetails(todo)" class="btn"> Ver detalles </v-btn>
+      <v-btn @click="emitComplete(props.todo.taskId)" class="btn"> Complete </v-btn>
+      <v-btn
+        v-if="isCompleted"
+        @click="emitDelete(props.todo.taskId)"
+        class="delete-btn"
+        >Delete</v-btn>
     </v-list-item-action>
     <v-divider></v-divider>
   </v-list-item>

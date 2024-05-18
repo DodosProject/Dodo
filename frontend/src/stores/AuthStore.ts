@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
-// import { useToDoStore } from '@/stores/todoStore'
 import { useUserStore } from '@/stores/UserStore'
 
 export const useAuthStore = defineStore('authStore', () => {

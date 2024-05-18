@@ -1,57 +1,65 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref } from 'vue'
-import { useToDoStore } from '@/stores/todoStore'
+import { onMounted, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import type { DoTask } from '@/core/types'
+import { useToDoStore } from '@/stores/todoStore'
 import TodoItemComponent from './TodoItemComponent.vue'
 
 const todoStore = useToDoStore()
-
+const todos = computed(() => todoStore.todos)
 const showDetails = ref(false)
-const todos = todoStore.todos
-const todoDetail = reactive<DoTask>({
-  taskId: 0,
-  title: '',
-  description: '',
-  creationDate: 0,
-  completed: false,
-  priority: 0
-})
 
-const handleTaskSelected = (todos: DoTask) => {
-  Object.assign(todoDetail, todos)
-  showDetails.value = true
+// const todoDetail = reactive<DoTask>({
+//   taskId: 0,
+//   title: '',
+//   description: '',
+//   creationDate: new Date(),
+//   completed: false,
+//   priority: 0,
+//   userId: 0
+// })
+
+const handleTaskCompleted = (id: number) => {
+  //todoStore.fetchComplete(id)
+  let foundTask = todoStore.todos.find(td => td.taskId === id)
+  if (foundTask){
+    foundTask.completed = true
+  }
+
+}
+
+const handledTaskDeleted = (id: number) => {
+  todoStore.fetchDelete(id)
 }
 
 onMounted(async () => {
-  const data = await todoStore.fetchTodos()
-  if (data != null) {
-    todos.values = data
-  }
+  // const data = await todoStore.fetchTodos()
+  // if (data != null) {
+  //   todos.values = data
+  // }
+  
 })
 </script>
 
 <template>
   <v-container>
     <v-row>
-      <v-col cols="8">
+      <v-col cols="12">
         <h1 class="display-2">To Do List</h1>
         <v-card>
           <v-card-text>
             <v-list>
-              <test-todo-list-comp
+              <todo-item-component
                 v-for="todo in todos"
                 :key="todo.taskId"
-                :book="todo"
-                @taskSelected="handleTaskSelected"
+                :todo="todo"
+                @todoCompleted="handleTaskCompleted"
+                @todoDeleted="handledTaskDeleted"
               />
             </v-list>
           </v-card-text>
         </v-card>
       </v-col>
-      <!--   <v-col cols="4">
-        <Book-Details-Component v-if="showDetails" :book="bookDetails" />
-      </v-col> -->
     </v-row>
   </v-container>
 </template>
@@ -71,3 +79,4 @@ onMounted(async () => {
   }
 }
 </style>
+@/stores/TodoStore@/stores/todoStore@/stores/todoStore@/stores/TodoStore@/stores/todoStore
