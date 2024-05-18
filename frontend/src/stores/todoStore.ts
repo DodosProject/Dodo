@@ -16,6 +16,22 @@ export const useToDoStore = defineStore('todoStore', {
           creationDate: 1,
           completed: false,
           priority: 1
+        },
+        {
+          taskId: 2,
+          title: 'test2',
+          description: 'test description2',
+          creationDate: 2,
+          completed: false,
+          priority: 2
+        },
+        {
+          taskId: 3,
+          title: 'test3',
+          description: 'test description3',
+          creationDate: 3,
+          completed: false,
+          priority: 3
         }
       ]
     },

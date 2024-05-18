@@ -1,7 +1,10 @@
 <template>
   <div class="todo-item">
-    <input type="checkbox" v-model="todo.completed" @change="toggleCompletion" />
-    <span :class="{ completed: todo.completed }">{{ todo.text }}</span>
+    <input type="checkbox" v-model="tasks.completed" @change="toggleCompletion" />
+    <div>
+      <span :class="{ completed: tasks.completed }">{{ tasks.title }}</span>
+    </div>
+
     <button @click="removeTodo">Remove</button>
   </div>
 </template>
@@ -10,10 +13,13 @@
 import { useToDoStore } from '@/stores/todoStore'
 
 const props = defineProps<{
-  todo: {
-    id: number
-    text: string
+  tasks: {
+    taskId: number
+    title: string
+    description: string
+    creationDate: number
     completed: boolean
+    priority: number
   }
 }>()
 
@@ -22,12 +28,12 @@ const emit = defineEmits(['update', 'remove'])
 const store = useToDoStore()
 
 const toggleCompletion = () => {
-  store.toggleTodoCompletion(props.todo.id)
+  store.toggleTodoCompletion(props.tasks.taskId)
   emit('update')
 }
 
 const removeTodo = () => {
-  store.removeTodo(props.todo.id)
+  store.removeTodo(props.tasks.taskId)
   emit('remove')
 }
 </script>
