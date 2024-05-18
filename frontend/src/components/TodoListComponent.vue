@@ -46,19 +46,3 @@ onMounted(async () => {
     </v-row>
   </v-container>
 </template>
-
-<style scoped>
-.display-2 {
-  font-size: 2rem;
-}
-
-.v-container {
-  padding-top: 0;
-}
-
-@media (max-width: 700px) {
-  .v-container {
-    padding-top: 100px;
-  }
-}
-</style>

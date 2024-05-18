@@ -82,7 +82,7 @@ const submitTask = () => {
             </v-form>
           </v-card-text>
           <v-card-actions>
-            <v-btn :disabled="!valid" color="primary" @click="submitTask"> Make Task </v-btn>
+            <v-btn :disabled="!valid" class=".app-button" @click="submitTask"> Make Task </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
